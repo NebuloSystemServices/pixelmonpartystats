@@ -1,6 +1,6 @@
-package your.domain.path;
+package com.github.johnclark96;
 
-import com.pixelmonmod.pixelmon.Pixelmon;
+import com.github.johnclark96.events.RegisterCommandEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -10,19 +10,17 @@ import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 import net.minecraftforge.fml.event.server.FMLServerStoppingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import your.domain.path.listener.PixelmonEggHatchExampleListener;
-import your.domain.path.listener.PokemonSpawnExampleListener;
 
-@Mod(ModFile.MOD_ID)
-@Mod.EventBusSubscriber(modid = ModFile.MOD_ID)
-public class ModFile {
+@Mod(PixelmonPartyStats.MOD_ID)
+@Mod.EventBusSubscriber(modid = PixelmonPartyStats.MOD_ID)
+public class PixelmonPartyStats {
 
-    public static final String MOD_ID = "examplemod";
+    public static final String MOD_ID = "pixelmonpartystats";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-    private static ModFile instance;
+    private static PixelmonPartyStats instance;
 
-    public ModFile() {
+    public PixelmonPartyStats() {
         instance = this;
     }
 
@@ -33,8 +31,9 @@ public class ModFile {
         // Here is how you register a listener for Pixelmon events
         // Pixelmon has its own event bus for its events, as does TCG
         // So any event listener for those mods need to be registered to those specific event buses
-        Pixelmon.EVENT_BUS.register(new PixelmonEggHatchExampleListener());
-        Pixelmon.EVENT_BUS.register(new PokemonSpawnExampleListener());
+//        Pixelmon.EVENT_BUS.register(new PixelmonEggHatchExampleListener());
+//        Pixelmon.EVENT_BUS.register(new PokemonSpawnExampleListener());
+
     }
 
     @SubscribeEvent
@@ -47,6 +46,9 @@ public class ModFile {
         //Register command logic here
         // Commands don't have to be registered here
         // However, not registering them here can lead to some hybrids/server software not recognising the commands
+
+        RegisterCommandEvent.onRegisterCommandEvent(event);
+
     }
 
     @SubscribeEvent
@@ -59,7 +61,7 @@ public class ModFile {
         // Logic for when the server is stopped
     }
 
-    public static ModFile getInstance() {
+    public static PixelmonPartyStats getInstance() {
         return instance;
     }
 

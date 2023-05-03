@@ -1,6 +1,8 @@
 package com.github.johnclark96;
 
-import com.github.johnclark96.events.RegisterCommandEvent;
+import com.github.johnclark96.commands.OpenMenuCommand;
+import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.command.CommandSource;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -46,9 +48,9 @@ public class PixelmonPartyStats {
         //Register command logic here
         // Commands don't have to be registered here
         // However, not registering them here can lead to some hybrids/server software not recognising the commands
-
-        RegisterCommandEvent.onRegisterCommandEvent(event);
-
+//        CommandDispatcher<CommandSource> dispatcher = event.getDispatcher();
+//        OpenMenuCommand.register(dispatcher);
+        new OpenMenuCommand(event.getDispatcher());
     }
 
     @SubscribeEvent

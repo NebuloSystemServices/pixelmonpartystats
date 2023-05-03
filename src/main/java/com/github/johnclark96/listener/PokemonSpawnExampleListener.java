@@ -1,4 +1,4 @@
-package your.domain.path.listener;
+package com.github.johnclark96.listener;
 
 import com.pixelmonmod.pixelmon.api.events.spawning.SpawnEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
